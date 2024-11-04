@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8507892093481190939}
   - component: {fileID: 8507892093481190942}
   - component: {fileID: 8507892093481190943}
+  - component: {fileID: 7806825029332778039}
   m_Layer: 5
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _sprite: {fileID: 21300000, guid: bc7de0518baa66147a633011ed947ac9, type: 3}
+  _flipSound: {fileID: 8300000, guid: bfd03db9ed45d6e4db81321cc4511d2a, type: 3}
 --- !u!95 &8507892093481190943
 Animator:
   serializedVersion: 5
@@ -158,3 +160,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7806825029332778039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507892093481191141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf82b3dd7f4984c89a1a2ba480f688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  transitionSpeed: 10

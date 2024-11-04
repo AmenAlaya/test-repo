@@ -169,10 +169,10 @@ RectTransform:
   m_Father: {fileID: 8563338655411557111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 354, y: -136}
-  m_SizeDelta: {x: 163.9272, y: 180.8788}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -123, y: -145}
+  m_SizeDelta: {x: 163.92725, y: 180.8788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &241122453
 CanvasRenderer:
@@ -3415,8 +3415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelSelectPanel: {fileID: 905203129053056558}
   _settingsPanelPrefab: {fileID: 905203128491020663}
-  _winPanel: {fileID: 540881728}
-  _losePanel: {fileID: 874888626}
+  _winPanel: {fileID: 874888626}
+  _losePanel: {fileID: 540881728}
   myMusicPlayer: {fileID: 905203128968196575}
   myAudioSource: {fileID: 905203128855527156}
   _musicImg: {fileID: 905203128862057113}

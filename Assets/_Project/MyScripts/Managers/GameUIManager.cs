@@ -36,8 +36,6 @@ public class GameUIManager : MonoBehaviour
     private bool sfxOn = true;
     private bool musicOn = true;
 
-
-
     private void Awake()
     {
         SoundsState();
@@ -53,12 +51,18 @@ public class GameUIManager : MonoBehaviour
     {
         if (isWin)
         {
-            SaveLoadManager.Save(Constant.LEVEL_DONE + currentLevel, star);
-            PlaySound(_winClip); _winPanel.SetActive(true);
+            if ((int)SaveLoadManager.Load(Constant.LEVEL_DONE + currentLevel) < star)
+                SaveLoadManager.Save(Constant.LEVEL_DONE + currentLevel, star);
+
+            Debug.Log("LEVEL REACHED" + Constant.LEVEL_REACHED + (currentLevel + 1));
+            SaveLoadManager.Save(Constant.LEVEL_REACHED + (currentLevel+1), 0);
+            PlaySound(_winClip); 
+            _winPanel.SetActive(true);
         }
         else
         {
-            PlaySound(_loseClip); _losePanel.SetActive(true);
+            PlaySound(_loseClip); 
+            _losePanel.SetActive(true);
         }
     }
 

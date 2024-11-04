@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,12 +14,16 @@ public class LevelBtn : MonoBehaviour
     private Image _image;
     [SerializeField] private Sprite _lockedSprite;
 
+    private Sprite _unlockedSprite;
+
     private int _index;
 
     private void Awake()
     {
         _image = GetComponent<Image>();
         _button = GetComponent<Button>();
+
+        _unlockedSprite = _image.sprite;
     }
 
     private void Start()
@@ -55,9 +60,12 @@ public class LevelBtn : MonoBehaviour
         }
         else
         {
+            Debug.Log(Constant.LEVEL_REACHED + _index.ToString());
             if (PlayerPrefs.HasKey(Constant.LEVEL_REACHED + _index.ToString()))
             {
                 _lvlIndex.gameObject.SetActive(true);
+                _image.sprite = _unlockedSprite;
+                
                 Debug.Log("Reached here");
             }
             else

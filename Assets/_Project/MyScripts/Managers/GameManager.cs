@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,22 @@ public class GameManager : MonoBehaviour
     private Card firstCard = null;
 
     [SerializeField] private int _numberOfAttempt = 3;
+    [SerializeField]private AudioClip matchClip;
+    [SerializeField]private AudioClip notMatchClip;
+
+    [SerializeField] private TextMeshProUGUI _numberOfAttemptText;
+
+    private void Awake()
+    {
+        NumberOfAttemptText();
+    }
+
+    private void NumberOfAttemptText()
+    {
+        _numberOfAttemptText.text = "Number of attemps : " + _numberOfAttempt.ToString();
+
+    }
+
     private void OnEnable()
     {
         EventManager.Instance.gameManagerEvents.OnCardSelected += CardSelected;
@@ -16,6 +33,11 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         EventManager.Instance.gameManagerEvents.OnCardSelected -= CardSelected;
+    }
+
+    private void PlaySfx(AudioClip audioClip)
+    {
+        EventManager.Instance.GameUIMangerEvents.PlaySound(audioClip);
     }
 
     private void CardSelected(Card card)
@@ -28,16 +50,17 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.GetId() == card.GetId())
         {
-            Debug.Log("Match");
+            PlaySfx(matchClip);
             SpawnManager.Instance.RemoveCard(firstCard);
             SpawnManager.Instance.RemoveCard(card);
         }
         else
         {
+            PlaySfx(notMatchClip);
             firstCard.Flip(Constant.FLIP_BACK_ANIM);
             card.Flip(Constant.FLIP_BACK_ANIM);
-            Debug.Log("No match");
             _numberOfAttempt--;
+            NumberOfAttemptText();
 
         }
 

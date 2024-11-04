@@ -11,6 +11,13 @@ public class Card : MonoBehaviour
     [SerializeField] private Sprite _sprite;
     private Sprite intialSprite;
 
+    [SerializeField] private AudioClip _flipSound;
+
+    private void PlayFlipSound()
+    {
+        EventManager.Instance.GameUIMangerEvents.PlaySound(_flipSound);
+    }
+
     private void Awake()
     {
         _button = GetComponent<Button>();
@@ -40,6 +47,7 @@ public class Card : MonoBehaviour
 
     public void ShowCard()
     {
+        PlayFlipSound();
         _button.interactable = false;
         EventManager.Instance.gameManagerEvents.CardSelected(this);
         _image.sprite = _sprite;
