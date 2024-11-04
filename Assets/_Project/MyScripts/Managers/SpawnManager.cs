@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance { get; private set; }
     [SerializeField] private Card _cardPrefab;
     [SerializeField] private List<CardSO> _cardsSO;
     [SerializeField] private Transform _cardParent;
 
     private List<Card> _cardsList = new List<Card>();
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -25,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void Shuffle(List<CardSO> list)
+    private void Shuffle(List<CardSO> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -43,4 +52,13 @@ public class SpawnManager : MonoBehaviour
         _cardsList.Add(card);
     }
 
+    public List<Card> GetCardsList()
+    {
+        return _cardsList;
+    }
+
+    public void RemoveCard(Card card)
+    {
+        _cardsList.Remove(card);
+    }
 }
